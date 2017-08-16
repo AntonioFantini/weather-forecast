@@ -7,5 +7,10 @@ pipeline {
         load 'license-checks/LicenseChecks.groovy'
       }
     }
+    stage('CryptoChecks') {
+      steps {
+        load 'crypto-checks/CryptoChecks.groovy'
+      }
+    }
   }
 }
