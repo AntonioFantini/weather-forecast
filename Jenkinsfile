@@ -5,6 +5,11 @@ pipeline {
       steps {
         git(url: 'https://github.com/AntonioFantini/gates-tool.git', branch: 'master')
         load 'licenses/RunGate.groovy'
+        script {
+          currentBuild.displayName = "release"
+          currentBuild.description = "release desc"
+        }
+        
       }
     }
     stage('CryptoChecks') {
