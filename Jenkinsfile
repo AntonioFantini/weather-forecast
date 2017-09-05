@@ -32,5 +32,10 @@ pipeline {
         load 'sourcecodelocation/RunGate.groovy'
       }
     }
+    stage('CommunityArtifactsVersioningChecks') {
+      steps {
+        load 'communityartifactsversioning/RunGate.groovy'
+      }
+    }
   }
 }
