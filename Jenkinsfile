@@ -1,10 +1,10 @@
 pipeline {
   agent any
   stages {
-    stage('LicenseChecks') {
+    stage('Licenses Checks') {
       steps {
         git(url: 'https://github.com/AntonioFantini/gates-tool.git', branch: 'master')
-        load 'licenses/RunGate.groovy'
+        load 'gates/licenses/RunGate.groovy'
         script {
           currentBuild.displayName = "release"
           currentBuild.description = "release desc"
@@ -12,29 +12,24 @@ pipeline {
         
       }
     }
-    stage('CryptoChecks') {
+    stage('Crypto Checks') {
       steps {
-        load 'crypto/RunGate.groovy'
+        load 'gates/crypto/RunGate.groovy'
       }
     }
-    stage('DependenciesChecks') {
+    stage('CVEs Checks') {
       steps {
-        load 'dependencies/RunGate.groovy'
+        load 'gates/cves/RunGate.groovy'
       }
     }
-    stage('CVEsChecks') {
+    stage('SourceCodeLocation Checks') {
       steps {
-        load 'cves/RunGate.groovy'
+        load 'gates/sourcecodelocation/RunGate.groovy'
       }
     }
-    stage('SourceCodeLocationChecks') {
+    stage('Dependencies Checks') {
       steps {
-        load 'sourcecodelocation/RunGate.groovy'
-      }
-    }
-    stage('CommunityArtifactsVersioningChecks') {
-      steps {
-        load 'communityartifactsversioning/RunGate.groovy'
+        load 'gates/dependencies/RunGate.groovy'
       }
     }
   }
