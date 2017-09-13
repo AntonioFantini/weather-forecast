@@ -4,7 +4,7 @@ pipeline {
     stage('Licenses Checks') {
       steps {
         git(url: 'http://git.app.eng.bos.redhat.com/git/jboss-prod-core/gates.git/', branch: 'master')
-        load 'gates/licenses/RunGate.groovy'
+        load 'gates/mavenrepovalidation/RunGate.groovy'
         script {
           currentBuild.displayName = "release"
           currentBuild.description = "release desc"
